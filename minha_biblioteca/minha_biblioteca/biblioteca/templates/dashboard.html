@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body { background-color: {{ cor_fundo }}; }
+    </style>
+</head>
+<body>
+    <h2>Minha Biblioteca Pessoal</h2>
+    <a href="{% url 'personalizar' %}">Personalizar Preferências</a> |
+    <a href="{% url 'adicionar_livro' %}">Adicionar Livro</a> |
+    <a href="{% url 'logout' %}">Sair</a>
+    <h3>Meus Livros</h3>
+    <ul>
+        {% for livro in livros %}
+            <li>{{ livro.titulo }} por {{ livro.autor }} ({{ livro.ano_publicacao }})</li>
+        {% empty %}
+            <li>Você não tem livros na sua coleção.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
